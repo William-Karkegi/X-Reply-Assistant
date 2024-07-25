@@ -14,7 +14,7 @@ A browser extension that assists in generating replies on X with various emotion
 
 1. Clone this repository:
    ```
-   git clone https://github.com/yourusername/x-reply-assistant.git
+   git clone https://github.com/William-Karkegi/x-reply-assistant
    ```
 2. Navigate to the project directory:
    ```
