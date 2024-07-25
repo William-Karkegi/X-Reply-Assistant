@@ -14,7 +14,7 @@ A browser extension that assists in generating replies on X with various emotion
 
 1. Clone this repository:
    ```
-   git clone https://github.com/William-Karkegi/x-reply-assistant
+   git clone https://github.com/yourusername/x-reply-assistant.git
    ```
 2. Navigate to the project directory:
    ```
@@ -36,7 +36,10 @@ A browser extension that assists in generating replies on X with various emotion
    ```
    npm run build
    ```
-7. Load the `dist` directory as an unpacked extension in your browser.
+7. Load the extension in Chrome:
+   - Open the Extension Management page by navigating to `chrome://extensions`.
+   - Enable Developer Mode by clicking the toggle switch next to "Developer mode".
+   - Click the "Load unpacked" button and select the `dist` directory in your project folder.
 
 ## Usage
 
