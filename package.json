@@ -1,7 +1,7 @@
 {
-  "name": "twitter-reply-assistant",
+  "name": "x-reply-assistant",
   "version": "1.1.0",
-  "description": "A browser extension that assists in generating replies on Twitter with various emotions using AI",
+  "description": "A browser extension that assists in generating replies on X with various emotions using AI",
   "main": "src/content.js",
   "scripts": {
     "build": "webpack --mode production",

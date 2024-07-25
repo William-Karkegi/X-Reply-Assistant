@@ -2,7 +2,7 @@
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
 /**
- * Handles click events on the Twitter page
+ * Handles click events on the X page
  * @param {Event} event - The click event
  */
 export function handleClick(event) {

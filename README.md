@@ -1,8 +1,8 @@
-# Twitter Reply Assistant
+# X Reply Assistant
 
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 
-A browser extension that assists in generating replies on Twitter with various emotions using AI.
+A browser extension that assists in generating replies on X with various emotions using AI.
 
 ## Features
 
@@ -14,11 +14,11 @@ A browser extension that assists in generating replies on Twitter with various e
 
 1. Clone this repository:
    ```
-   git clone https://github.com/yourusername/twitter-reply-assistant.git
+   git clone https://github.com/yourusername/x-reply-assistant.git
    ```
 2. Navigate to the project directory:
    ```
-   cd twitter-reply-assistant
+   cd x-reply-assistant
    ```
 3. Copy `.env.example` to `.env` and add your OpenAI API key:
    ```
@@ -40,13 +40,13 @@ A browser extension that assists in generating replies on Twitter with various e
 
 ## Usage
 
-1. Navigate to Twitter
+1. Navigate to X
 2. Click on a tweet to reply
 3. Use the emotion buttons or custom input to generate a reply
 
 ## Contributing
 
-We welcome contributions to the Twitter Reply Assistant! Please see our [Contributing Guide](CONTRIBUTING.md) for more details on how to get started.
+We welcome contributions to the X Reply Assistant! Please see our [Contributing Guide](CONTRIBUTING.md) for more details on how to get started.
 
 ## License
 

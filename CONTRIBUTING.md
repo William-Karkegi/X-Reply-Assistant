@@ -1,6 +1,6 @@
-# Contributing to Twitter Reply Assistant
+# Contributing to X Reply Assistant
 
-First off, thank you for considering contributing to Twitter Reply Assistant! It's people like you that make this project such a great tool.
+First off, thank you for considering contributing to X Reply Assistant! It's people like you that make this project such a great tool.
 
 ## Code of Conduct
 
@@ -62,4 +62,4 @@ This section lists the labels we use to help us track and manage issues and pull
 - `documentation` - Issues or pull requests related to documentation.
 - `good first issue` - Good for newcomers.
 
-Thank you for contributing to Twitter Reply Assistant!
+Thank you for contributing to X Reply Assistant!

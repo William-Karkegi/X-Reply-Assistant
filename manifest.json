@@ -1,12 +1,12 @@
 {
   "manifest_version": 3,
-  "name": "Twitter Reply Assistant",
+  "name": "X Reply Assistant",
   "version": "1.1",
-  "description": "Assists in generating replies on Twitter with various emotions using AI",
+  "description": "Assists in generating replies on X with various emotions using AI",
   "permissions": ["activeTab", "scripting"],
   "content_scripts": [
     {
-      "matches": ["https://twitter.com/*", "https://x.com/*"],
+      "matches": ["https://x.com/*"],
       "js": ["dist/content.js"]
     }
   ]
