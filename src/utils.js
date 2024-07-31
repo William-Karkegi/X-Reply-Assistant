@@ -121,6 +121,50 @@ export function addTextInput() {
  */
 async function generateReply(emotion) {
   const tweetBox = document.querySelector('div[data-testid="tweetText"]');
+  const img = document.querySelector("img[alt='Image']");
+
+  let imgDescription = "";
+
+  if (img) {
+    try {
+      const response = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${OPENAI_API_KEY}`,
+        },
+        body: JSON.stringify({
+          model: "gpt-4o-mini",
+          messages: [
+            {
+              role: "user",
+              content: [
+                { type: "text", text: "Describe this image in detail." },
+                {
+                  type: "image_url",
+                  image_url: {
+                    url: img.src,
+                  },
+                },
+              ],
+            },
+          ],
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      const generatedText = data.choices[0].message.content;
+      imgDescription = generatedText;
+    } catch (error) {
+      console.error("Error generating reply:", error);
+      alert("An error occurred while generating the reply. Please try again.");
+    }
+  }
+
   let text = "";
   let question = "";
 
@@ -210,46 +254,41 @@ async function generateReply(emotion) {
   } else {
     text = getTextFromChildren(tweetBox);
 
-    question = `You are tasked with generating a human-like response to a tweet while maintaining a specific tone. Here's how to proceed:
+    question = `You are a helpful tweet reply assistant. Your task is to craft an engaging, relevant, and valuable reply to a given tweet. Sometimes, the tweet may be accompanied by an image. Your goal is to create a reply that follows best practices for social media engagement while staying true to the context of the original tweet.
 
-      First, here's the content of the tweet you're responding to:
-      <tweet_content>
-      ${text}
-      </tweet_content>
+Here is the tweet you need to reply to:
+<tweet>
+${text}
+</tweet>
 
-      The tone you should use in your response is:
-      <tone>
-      ${emotion}
-      </tone>
+Here is the tone to use for the reply:
+<tone>
+${emotion}
+</tone>
 
-      To generate an appropriate, human-like response:
+If an image is associated with the tweet, here is its description:
+<image_description>
+${imgDescription}
+</image_description>
 
-      1. Analyze the tweet:
-        - Identify the main topic or message
-        - Note any specific points, questions, or emotions expressed
-        - Consider the context and any cultural references
+First, carefully analyze the tweet and the image description (if provided). Consider the following:
+1. The main topic or message of the tweet
+2. The tone (e.g., serious, humorous, informative)
+3. Any questions asked or opinions expressed
+4. Relevant details from the image description
 
-      2. Reflect on the specified tone:
-        - Think about how a person would naturally express this tone in conversation
-        - Consider subtle ways to convey the tone without being overly explicit
+Now, craft a reply keeping these guidelines in mind:
+1. Be concise: Keep your reply brief and to the point.
+2. Be relevant: Ensure your response directly relates to the original tweet.
+3. Use clear language: Avoid excessive slang or jargon.
+4. Be respectful: Maintain a polite tone, even if expressing disagreement.
+5. Add value: Provide useful information or insights.
+6. Personal touch: If possible, address the original tweeter by name.
+7. Praise achievements: If applicable, offer genuine praise for accomplishments mentioned.
 
-      3. Craft your response:
-        - Address the main points of the original tweet in a conversational manner
-        - Incorporate the specified tone naturally, as if you were chatting with a friend
-        - Keep it concise and relevant, aiming for around 140-280 characters
-        - Add a personal touch or relatable comment to make it feel more human
-        - If appropriate, include a question or comment to encourage further interaction
+Compose your reply and present it within <reply> tags.
 
-      4. Review and refine your response:
-        - Read it aloud to ensure it sounds natural and conversational
-        - Check that it maintains the specified tone without feeling forced
-        - Ensure it's within the character limit
-        - Add small imperfections if needed (e.g., a common abbreviation, a casual phrase)
-
-      5. Output your response:
-        Provide your final tweet response inside <response> tags. Do not include any explanation or commentary outside of these tags.
-
-      Remember, the goal is to create a response that feels genuine and human, not like a bot or spam. Avoid overly formal language, perfect grammar, or excessively enthusiastic responses unless they fit the specified tone and context..
+Remember to tailor your response to the specific content and context of the tweet, and ensure that your reply would be appropriate and engaging on a public social media platform.
       `;
   }
 
@@ -262,7 +301,12 @@ async function generateReply(emotion) {
       },
       body: JSON.stringify({
         model: "gpt-4o-mini",
-        messages: [{ role: "user", content: question }],
+        messages: [
+          {
+            role: "user",
+            content: question,
+          },
+        ],
       }),
     });
 
